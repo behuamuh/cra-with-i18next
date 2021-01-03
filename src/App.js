@@ -3,6 +3,31 @@ import { useTranslation } from 'react-i18next';
 import './App.css';
 import SwitchLang from './components/SwitchLang';
 
+function getAsyncRandomNumber() {
+  return new Promise(resolve => {
+    setTimeout(resolve, 2000, Math.random());
+  })
+}
+
+// getAsyncRandomNumber()
+//   .then(value => console.log(value));
+
+async function getAsyncRandomNumberTwo() {
+  // const value = await getAsyncRandomNumber(); // 1 - могу использовать await
+
+  // throw 'Help - error'; // 3 - Если в асинхронной ф-ции происходит ошибка, функция возвращает Promise.reject(с ошибкой)
+
+  return 10; // 2 - асинхронная функция возвращает промисс
+}
+
+const promise = getAsyncRandomNumberTwo();
+console.log(promise);
+
+promise
+  // .then(value => console.log(value))
+  .catch(err => console.log(err));
+
+
 const users = [
   'Yulia', 'German', 'Anna', 'Boris',
 ];
